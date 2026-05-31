@@ -32,3 +32,6 @@ class Entero:
             if self.__numero % i == 0:
                 return False 
         return True 
+
+    def __str__(self) -> str:
+        return f'Entero({self.__numero})'

@@ -1,22 +1,25 @@
-from ClaseEntero import Entero  # Aca importe la clase
+from ClaseEntero import Entero
 
-Num1 = Entero(6)
-Num2 = Entero(4)
 
-# Get/Set
-print(Num1.get_numero())       
-Num1.set_numero(5)
-print(Num1.get_numero())       
+def main():
+	Num1 = Entero(6)
+	Num2 = Entero(4)
 
-# cuadrado
-print(Num1.cuadrado())         
+	print('--- Resultado: Clase Entero ---')
+	print(f'Número inicial (Num1): {Num1.get_numero()}')
 
-# Par/Impar
-print(Num1.esPar())             
-print(Num1.esImpar())          
+	Num1.set_numero(5)
+	print(f'Número modificado (Num1): {Num1.get_numero()}')
 
-# Factorial
-print(Num2.factorial())        
+	print(f'Cuadrado de {Num1.get_numero()}: {Num1.cuadrado()}')
+	print(f'¿{Num1.get_numero()} es par? {'Sí' if Num1.esPar() else 'No'}')
+	print(f'¿{Num1.get_numero()} es impar? {'Sí' if Num1.esImpar() else 'No'}')
 
-# Primo
-print(Num2.esPrimo())          
+	print('\n--- Operaciones sobre Num2 ---')
+	print(f'Número (Num2): {Num2.get_numero()}')
+	print(f'Factorial de {Num2.get_numero()}: {Num2.factorial()}')
+	print(f'¿{Num2.get_numero()} es primo? {'Sí' if Num2.esPrimo() else 'No'}')
+
+
+if __name__ == '__main__':
+	main()
