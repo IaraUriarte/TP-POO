@@ -60,3 +60,19 @@ mi_auto.acelerar(40)
 mi_auto.frenar(30)
 mi_auto.apagar()         # Método heredado
 mi_auto.acelerar(10)     # Intento fallido
+
+
+# Alternativa
+class Identificador:
+    def __init__(self, id):
+        self.id = id
+
+class Cliente:
+    def __init__(self, id, nombre):
+        self.identificador = Identificador(id)
+        self.nombre = nombre
+
+class Producto:
+    def __init__(self, id, descripcion):
+        self.identificador = Identificador(id)
+        self.descripcion = descripcion
