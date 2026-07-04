@@ -1,66 +1,27 @@
 # CÓDIGO GENERADO POR IA
 class Motor:
-    def __init__(self, cilindros: int, combustible: str, caballos_fuerza: int):
-        self.cilindros = cilindros
-        self.combustible = combustible
-        self.caballos_fuerza = caballos_fuerza
-        self.encendido = False
+    def __init__(self, potencia):
+        self.potencia = potencia
 
     def encender(self):
-        self.encendido = True
-        print(f"Motor encendido ({self.caballos_fuerza} HP, {self.cilindros} cilindros)")
-
-    def apagar(self):
-        self.encendido = False
-        print("Motor apagado.")
-
-    def estado_motor(self):
-        estado = "encendido" if self.encendido else "apagado"
-        print(f"Motor {estado} | Combustible: {self.combustible} | "
-              f"Cilindros: {self.cilindros} | HP: {self.caballos_fuerza}")
+        print("Motor encendido")
 
 
-# Clase derivada
 class Auto(Motor):
-    def __init__(self, marca: str, modelo: str, año: int, color: str,
-                 cilindros: int, combustible: str, caballos_fuerza: int):
-        super().__init__(cilindros, combustible, caballos_fuerza)  # Hereda Motor
+    def __init__(self, marca, potencia):
+        super().__init__(potencia)
         self.marca = marca
-        self.modelo = modelo
-        self.año = año
-        self.color = color
-        self.velocidad = 0
 
-    def acelerar(self, incremento: int):
-        if not self.encendido:
-            print("No puedes acelerar, el motor está apagado.")
-            return
-        self.velocidad += incremento
-        print(f"Acelerando... Velocidad actual: {self.velocidad} km/h")
-
-    def frenar(self, decremento: int):
-        self.velocidad = max(0, self.velocidad - decremento)
-        print(f"Frenando... Velocidad actual: {self.velocidad} km/h")
-
-    def descripcion(self):
-        print(f"{self.año} {self.marca} {self.modelo} ({self.color})")
-        self.estado_motor()  # Método heredado de Motor
+    def mostrar_datos(self):
+        print(f"Marca: {self.marca}")
+        print(f"Potencia: {self.potencia} HP")
 
 
-# --- Uso ---
-mi_auto = Auto(
-    marca="Toyota", modelo="Corolla", año=2023, color="Rojo",
-    cilindros=4, combustible="Gasolina", caballos_fuerza=132
-)
+# Programa principal
+auto = Auto("Toyota", 150)
 
-mi_auto.descripcion()
-mi_auto.encender()       # Método heredado
-mi_auto.acelerar(60)
-mi_auto.acelerar(40)
-mi_auto.frenar(30)
-mi_auto.apagar()         # Método heredado
-mi_auto.acelerar(10)     # Intento fallido
-
+auto.encender()
+auto.mostrar_datos()
 
 # Alternativa
 class Identificador:
