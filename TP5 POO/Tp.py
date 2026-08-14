@@ -116,6 +116,8 @@ class Rectangulo(ElementoGrafico):
         return 2 * (self.getLadoMenor() + self.getLadoMayor())
 
     def escalar(self, factor: float):
+    # Si el factor es menor o igual a cero, la figura perdería sentido geométrico,
+    # por eso no se permite escalar con esos valores.
         if factor <= 0:
             raise ValueError(f"El factor de escala debe ser estrictamente mayor que cero. Recibido: {factor}")
         self.setLadoMenor(self.getLadoMenor() * factor)
