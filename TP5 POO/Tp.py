@@ -246,14 +246,6 @@ def main():
     print("Elementos iniciales en el lienzo:")
     lienzo.mostrarElementos()
 
-    # Demostración de escalado
-    print()
-    print("Escalando elementos")
-    print("Escalando Rectángulo por 2.0 y Círculo por 1.5...")
-    rect.escalar(2.0)
-    circ.escalar(1.5)
-    lienzo.mostrarElementos()
-
     # Demostración del comportamiento de Cuadrado/Círculo ante mutaciones
     print()
     print("Comporbación de integridad en cuadrado y círculo")
@@ -261,12 +253,6 @@ def main():
     print("Modificando cuad.setLadoMayor(10.0)...")
     cuad.setLadoMayor(10.0)
     print(f"Cuadrado modificado: LadoMenor = {cuad.getLadoMenor()}, LadoMayor = {cuad.getLadoMayor()} (Integridad mantenida: {cuad.getLadoMenor() == cuad.getLadoMayor()})")
-
-    print()
-    print(f"Círculo original: RadioMayor = {circ.getRadioMayor()}, RadioMenor = {circ.getRadioMenor()}")
-    print("Modificando circ.setRadioMenor(8.0)...")
-    circ.setRadioMenor(8.0)
-    print(f"Círculo modificado: RadioMayor = {circ.getRadioMayor()}, RadioMenor = {circ.getRadioMenor()} (Integridad mantenida: {circ.getRadioMayor() == circ.getRadioMenor()})")
 
     print()
     print("Ejecución del bucle del motor")
