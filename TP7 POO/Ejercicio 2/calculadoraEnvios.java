@@ -1,6 +1,5 @@
-public class DHL extends Correo {
-    @Override
-    public double calcularCosto(double peso) {
-        return (peso * 45.0) + 80.0;
+public class CalculadoraEnvios {
+    public double obtenerCosto(Correo correo, double peso) {
+        return correo.calcularCosto(peso);  
     }
 }
