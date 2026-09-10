@@ -3,17 +3,19 @@ public class LineaFactura {
     private int cantidad;
     private double precioUnitario;
     private double porcentajeIva;
-    private double porcentajeDescuento;
+    private double subtotalConDescuentos;
 
     public LineaFactura(Producto producto, int cantidad) {
         this.cantidad = cantidad;
         this.precioUnitario = producto.getPrecioBase();
         this.porcentajeIva = producto.getPorcentajeIva();
-        this.porcentajeDescuento = 0.0;
+
+        this.subtotalConDescuentos = cantidad * precioUnitario;
     }
 
     public void aplicarDescuento(double porcentaje) {
-        this.porcentajeDescuento = porcentaje;
+        subtotalConDescuentos =
+                subtotalConDescuentos * (1 - porcentaje);
     }
 
     public int getCantidad() {
@@ -25,15 +27,15 @@ public class LineaFactura {
     }
 
     public double getMontoDescuento() {
-        return getSubtotalSinDescuento() * porcentajeDescuento;
+        return getSubtotalSinDescuento() - subtotalConDescuentos;
     }
 
     public double getSubtotalNeto() {
-        return getSubtotalSinDescuento() - getMontoDescuento();
+        return subtotalConDescuentos;
     }
 
     public double getSubtotalIva() {
-        return getSubtotalNeto() * porcentajeIva;
+        return subtotalConDescuentos * porcentajeIva;
     }
 
     public double getSubtotalFinal() {
