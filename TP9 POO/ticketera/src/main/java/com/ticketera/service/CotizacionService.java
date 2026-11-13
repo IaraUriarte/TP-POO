@@ -20,9 +20,10 @@ public class CotizacionService {
     private final PrecioSectorRepository precioSectorRepository;
     private final EntradaRepository entradaRepository;
 
-    // Inyección de dependencias por constructor: Spring entrega los repositorios ya creados
+    // Inyección de dependencias por constructor: Spring entrega los repositorios ya
+    // creados
     public CotizacionService(PrecioSectorRepository precioSectorRepository,
-                             EntradaRepository entradaRepository) {
+            EntradaRepository entradaRepository) {
         this.precioSectorRepository = precioSectorRepository;
         this.entradaRepository = entradaRepository;
     }
@@ -34,7 +35,7 @@ public class CotizacionService {
         PrecioSector precioSector = precioSectorRepository
                 .findByEventoIdAndSectorId(request.eventoId(), request.sectorId())
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND,
-                        "No hay un precio definido para ese sector en ese evento"));
+                        "La cantidad de entradas solicitadas debe ser mayor a cero"));
 
         // Escenario 2: validación de stock físico
         validarDisponibilidad(request, cantidad);
@@ -64,7 +65,8 @@ public class CotizacionService {
         long disponibles = entradaRepository.countByEventoIdAndSectorIdAndEstado(
                 request.eventoId(), request.sectorId(), EstadoEntrada.DISPONIBLE);
         if (disponibles < cantidad) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Capacidad insuficiente");
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,
+                    "Capacidad insuficiente o entradas no disponibles");
         }
     }
 }
